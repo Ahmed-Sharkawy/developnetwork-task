@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StatusController;
+use App\Http\Controllers\Api\StatusController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\TagsController;
 use App\Http\Controllers\Api\Auth\AuthController;
@@ -22,7 +22,7 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 
-Route::group(['middleware' => 'auth:sanctum'], function () {
+Route::group(['middleware' => 'auth:api'], function () {
 
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('verified', [AuthController::class, 'verified']);

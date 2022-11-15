@@ -19,8 +19,8 @@ class StatusController extends Controller
 
         $user = new User();
         $data['users_count']    = $user->count();
-        $data['users_not_post'] = $user->has('posts', '=', 0)->count();
-        $data['posts']          = Post::get()->count();
+        $data['users_not_posts'] = $user->whereDoesntHave('posts')->count();
+        $data['posts']          = Post::count();
 
         return successMessageWithData('data', $data);
     }
